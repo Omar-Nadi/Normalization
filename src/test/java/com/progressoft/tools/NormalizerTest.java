@@ -75,7 +75,7 @@ public class NormalizerTest {
         List<String> generatedLines = Files.readAllLines(destPath);
         Path assertionPath = copyFile("/marks_z.csv", induction.resolve("marks_z.csv"));
         List<String> expectedLines = Files.readAllLines(assertionPath);
-        assertLines(generatedLines, expectedLines);
+        assertLines(expectedLines, generatedLines);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class NormalizerTest {
         List<String> generatedLines = Files.readAllLines(destPath);
         Path assertionPath = copyFile("/employees_z.csv", induction.resolve("employees_z.csv"));
         List<String> expectedLines = Files.readAllLines(assertionPath);
-        assertLines(generatedLines, expectedLines);
+        assertLines(expectedLines, generatedLines);
     }
 
 
@@ -200,10 +200,10 @@ public class NormalizerTest {
         return path;
     }
 
-    private void assertLines(List<String> generatedLines, List<String> expectedLines) {
-        Assertions.assertTrue(generatedLines.size() == expectedLines.size(), "lines are not identical");
-        for (int i = 0; i < generatedLines.size(); i++) {
-            Assertions.assertEquals(expectedLines.get(i), generatedLines.get(i));
+    private void assertLines(List<String> expectedLines, List<String> actualLines) {
+        Assertions.assertTrue(actualLines.size() == expectedLines.size(), "lines are not identical");
+        for (int i = 0; i < actualLines.size(); i++) {
+            Assertions.assertEquals(expectedLines.get(i), actualLines.get(i));
         }
     }
 }

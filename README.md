@@ -1,77 +1,77 @@
-# Important Note
-The purpose of this assignment is to evaluate the candidates skills as an initial step in the hiring process, it is
-important not to share the task and the solution of the task with any other party or other potential candidates, this
-will help both of us to have accurate assessment results and avoid any discomfort for both of us.
+# Data Normalization Project
 
-# Task overview
-The candidate should implement a normalization java utility to be used to normalize
-numerical columns in a CSV file, the project will support two types of normalization approaches:
-* Z-Score
-* Min-Max scaling
+## Introduction
 
-Interface [Normalizer](src/main/java/com/progressoft/tools/Normalizer.java) defines the contracts 
-for both normalization techniques.
+This project is a Java-based implementation of data normalization techniques, specifically Z-score and Min-Max scaling. It includes a `NormalizerImpl` class that implements the `Normalizer` interface, a `ScoringSummaryImpl` class that implements the `ScoringSummary` interface, and a comprehensive unit test class to ensure the functionality of the implemented methods.
 
-The candidate should follow the [unit tests](src/test/java/com/progressoft/tools/NormalizerTest.java)
-in this project to identify what is the expected behavior to be implement.
+## Required setup
+- Java 8+
+- Maven 3.6+
+- A Java IDE like Eclipse, NetBeans, or IntelliJ.
 
-# Required setup
-To work on this project, you need the following:
-* Java 8+
-* Maven 3.6+
-* A Java IDE like Eclipse, NetBeans, or IntelliJ, IntelliJ is preferred, community versions should
-suit your needs.
-* Git to clone the project or use the download link to download the project as zip.
-* You can follow [GUIDE](GUIDE.MD) to setup the project.
+## Project Setup
 
+1. **Clone the Repository**: Clone the project repository to your local machine.
 
-# Deliverables
-**All requirements mentioned in this section is a must, the submission will be considered as failed
-if one is missing**
-* The candidate should clone this project, add his solution, **then deliver it as a compressed file (RAR format) through email**, the mp4 files under docs folder and the target folder (resulted from the maven build) could be removed to reduce the size of the deliverable. Also, it could be shared through Google Drive (or similar media) then share a public access link. Note: the deliverable zip shouldn't exceed 10 MB.
-* All test cases in [unit tests](src/test/java/com/progressoft/tools/NormalizerTest.java) should pass.
-* You are only allowed to use Java SE API, any additional libraries shouldn't be used especially for calculations
-* Always use HALF_EVEN when rounding decimal places and fractions.
-* The project build using maven should success and should execute all test cases, if you execute below
-build command through a terminal it should execute successfully
-```shell script
-mvn clean install
-``` 
-* Make sure to send your assignment without output artifacts, this could be accomplished by executing mvn clean before zipping and submitting the assignment
-```shell script
-mvn clean
-```
-* You should edit [NOTES.MD](NOTES.MD) file answering the questions in it.
-* Your feedback is welcomed, even if you are not able to deliver this assignment. 
+2. **Install Dependencies**: Ensure you have Java SE installed on your machine. This project does not require any additional libraries.
 
-# Bonus Points
-To get additional points, you can apply one (or all) of the following:
-* Provide an executable jar file which allows the evaluator to use the implemented utility through 
-    command line as below:
-    ```shell script
-    java -jar iterview-task-1.0-SNAPSHOT.jar [SOURCE_PATH] [DEST_PATH] [COLUMN_TO_NORMALIZE] [NORMALIZATION_METHOD]
-    ```
-    for example: if we want to read the ```/home/user/in/marks.csv``` file, apply a Min-Max normalization against
-     ```mark``` column in it, then save the updated csv file to ```/home/user/out/marks_normalized.csv```, 
-     the command should look like below:
-    ```shell script
-    java -jar interview-task-1.0-SNAPSHOT.jar /home/user/out/marks.csv /home/user/out/marks_normalized.csv mark min-max
-    ``` 
-    if z-score is what to apply, the command should look like below:
-    ```shell script
-    java -jar interview-task-1.0-SNAPSHOT.jar /home/user/out/marks.csv /home/user/out/marks_normalized.csv mark z-score
-    ``` 
-* Support another type of files, like XML or json, make sure to not break the old cases as well. You can utilize third-party dependencies and libraries to implement this
-* Implement an HTML layout which allows a user to upload a file, choose the column to scale, 
-then generate the result CSV file, provide steps on how to use it. You can utilize third-party dependencies and librarires to implement this.
-* There are some scenarios we didn't cover in our unit tests, can you find them and provide proper
-test coverage for them.
+3. **Build the Project**: Navigate to the project directory in your terminal and run `mvn clean install` to build the project and run all tests.
 
-# Grading Criteria
-* All deliverables under [Deliverables](#deliverables) section should pass, the task will automatically fail
-if at least one is not covered.
-* Implemented production code should be written as clean as possible, the quality of the submitted code
-  is going to be evaluated
-* Your notes written in NOTES.MD is going to be considered.
-* Implementing any of the bonus points should be helpful only if the main deliverables are met within the
- expected level. 
+## Understanding Data Normalization
+
+Data normalization is a preprocessing technique used to standardize the range of independent variables or features of a dataset. It ensures that data values are on a similar scale, which helps in improving the performance and stability of machine learning algorithms.
+
+### Z-Score Normalization
+
+Z-score normalization, also known as standardization, transforms data values into a standard normal distribution with a mean of 0 and a standard deviation of 1. It is calculated by subtracting the mean of the dataset from each data point and then dividing by the standard deviation.
+
+The formula for Z-score normalization is:
+
+\[ z = \frac{x - \mu}{\sigma} \]
+
+Where:
+- \( z \) is the standardized value (Z-score)
+- \( x \) is the original value
+- \( \mu \) is the mean of the dataset
+- \( \sigma \) is the standard deviation of the dataset
+
+### Min-Max Scaling
+
+Min-Max scaling, also known as normalization, rescales data values to a fixed range, typically between 0 and 1. It is calculated by subtracting the minimum value from each data point and then dividing by the difference between the maximum and minimum values.
+
+The formula for Min-Max scaling is:
+
+\[ x' = \frac{x - \text{min}(X)}{\text{max}(X) - \text{min}(X)} \]
+
+Where:
+- \( x' \) is the scaled value
+- \( x \) is the original value
+- \( \text{min}(X) \) is the minimum value of the dataset
+- \( \text{max}(X) \) is the maximum value of the dataset
+
+## Building and Running the Project
+
+1. **Building**: Execute `mvn clean install` in the project directory. This command cleans the project, compiles the source code, runs tests, and installs the package into the local repository.
+
+2. **Running Unit Tests**: Execute `mvn test` to run all unit tests. Ensure all tests pass before proceeding.
+
+## Unit Testing
+
+The project includes a comprehensive suite of unit tests to validate the functionality of the `NormalizerImpl` class and its methods. The tests cover various scenarios, including:
+
+- **Invalid Input Handling**: Tests that ensure the application correctly handles invalid inputs, such as non-existent files or columns not found in the CSV files.
+- **Z-score Normalization**: Tests that validate the Z-score normalization process for both marks and salary columns in sample CSV files.
+- **Min-Max Scaling**: Tests that verify the Min-Max scaling process for both marks and salary columns in sample CSV files.
+
+### Understanding Test Cases
+
+The unit tests are designed to cover a wide range of scenarios, including:
+
+- **Exception Handling**: Tests that verify the application throws the correct exceptions when encountering invalid inputs.
+- **Normalization Process**: Tests that validate the normalization process by comparing the output of the normalized data with expected results.
+
+Each test case is designed to be self-contained, ensuring that the tests are independent and can be run in any order.
+
+## Conclusion
+
+This project demonstrates the application of Z-score and Min-Max scaling techniques for data normalization in Java. By adhering to best practices for unit testing and ensuring all tests pass, the project provides a robust and reliable solution for data normalization tasks.
